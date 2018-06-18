@@ -1,6 +1,8 @@
 package com.mithilesh.recipeapp.models;
 
 
+import com.mithilesh.recipeapp.enums.Dificulties;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -21,11 +23,20 @@ public class Recipe {
     @Lob
     private Byte[] image;
 
+    @Enumerated(value = EnumType.STRING)
+    private Dificulties dificulties;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
     private Set<Ingredient> ingredients;
 
     @OneToOne(cascade = CascadeType.ALL)
     private Note note;
+
+    @ManyToMany
+    @JoinTable(name = "recipe_category",
+            joinColumns = @JoinColumn(name = "recipe_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id"))
+    private Set<Category> categories;
 
     public Long getId() {
         return id;
@@ -113,5 +124,21 @@ public class Recipe {
 
     public void setNote(Note note) {
         this.note = note;
+    }
+
+    public Dificulties getDificulties() {
+        return dificulties;
+    }
+
+    public void setDificulties(Dificulties dificulties) {
+        this.dificulties = dificulties;
+    }
+
+    public Set<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Set<Category> categories) {
+        this.categories = categories;
     }
 }
