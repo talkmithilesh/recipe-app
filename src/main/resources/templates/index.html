@@ -5,6 +5,18 @@
     <title>Recipe</title>
 </head>
 <body>
-<H1>Recepies</H1>
+<H1>Recipes</H1>
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Description</th>
+    </tr>
+
+    <tr th:each="recipe : ${recipes}">
+        <td th:text="${recipe.getId()}"> 123</td>
+        <td th:text="${recipe.getDescription()}">This is the description</td>
+    </tr>
+</table>
 </body>
 </html>

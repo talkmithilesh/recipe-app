@@ -1,6 +1,6 @@
 package com.mithilesh.recipeapp.enums;
 
-public enum Dificulties {
+public enum Difficulties {
     EASY,
     MODERATE,
     KIND_OF_HARD,
