@@ -3,20 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <title>Recipe</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet"
+          th:href="@{/webjars/bootstrap/4.1.1/css/bootstrap.min.css}">
+
+    <script src="/webjars/jquery/3.0.0/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            th:src="@{/webjars/bootstrap/4.1.1/js/bootstrap.min.js}">
+
+    </script>
+
 </head>
 <body>
-<H1>Recipes</H1>
+<div class="container-fluid" style="margin-top: 20px">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
 
-<table>
-    <tr>
-        <th>Id</th>
-        <th>Description</th>
-    </tr>
+                <div class="card-header bg-primary">
+                    <h1 class="card-title">My Recipes</h1>
+                </div>
+                <div class="card-body">
+                    <div class="thead-inverse" th:if="${not #lists.isEmpty(recipes)}">
+                        <table class="table table-hover ">
+                            <thead class="thead-inverse">
+                            <tr>
+                                <th>ID</th>
+                                <th>Description</th>
+                            </tr>
+                            </thead>
+                            <tr th:each="recipe : ${recipes}">
+                                <td th:text="${recipe.id}">334</td>
+                                <td th:text="${recipe.description}">Tasty Goodnees 3</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-    <tr th:each="recipe : ${recipes}">
-        <td th:text="${recipe.getId()}"> 123</td>
-        <td th:text="${recipe.getDescription()}">This is the description</td>
-    </tr>
-</table>
 </body>
 </html>
